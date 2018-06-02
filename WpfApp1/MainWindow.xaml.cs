@@ -4,22 +4,12 @@ namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
-        API Twitch = new API();
+        Api Twitch = new Api();
 
         public MainWindow()
 
         {
             InitializeComponent();
-        }
-
-        private void JoinChannel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ChatInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
         }
 
         private void SendMsgToChat_Click(object sender, RoutedEventArgs e)

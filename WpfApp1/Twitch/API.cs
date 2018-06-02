@@ -2,7 +2,7 @@
 
 namespace WpfApp1
 {
-    class API
+    class Api
     {   
 
         public void SendMsgToChat(string msg)
