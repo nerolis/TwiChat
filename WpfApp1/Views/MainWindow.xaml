@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="400">
+
+    <Window.Resources>
+        <RoutedUICommand x:Key="SendMsg" Text="Text" />
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource SendMsg}" Executed="SendMsgToChat_Click" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{StaticResource SendMsg}" />
+    </Window.InputBindings>
+
+    <Grid>
+        <ListBox>
+            <!-- other XAML omitted, you just need to add the following bit -->
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+
+            </ListBox.ItemContainerStyle>
+            <ScrollViewer Height="522" Width="382">
+                <StackPanel Height="auto" Width="auto" VerticalAlignment="Bottom">
+                    <TextBox x:Name="MsgBox" Height="516" HorizontalAlignment="Left"  VerticalAlignment="Top" TextWrapping="Wrap" Text="TextBox" Width="366" />
+                </StackPanel>
+            </ScrollViewer>
+        </ListBox>
+        <Button x:Name="SendMsgToChat" Content="Button" Width="75" HorizontalAlignment="right"  VerticalAlignment="Bottom" Click="SendMsgToChat_Click_1" />
+        <TextBox x:Name="ChatInput" Height="38" TextWrapping="Wrap" Text="TextBox" Width="auto"  VerticalAlignment="Bottom" Margin="0,0,75,0" />
+    </Grid>
+</Window>

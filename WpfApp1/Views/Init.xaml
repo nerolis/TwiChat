@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp1.Views.Init"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal"
+        xmlns:local="clr-namespace:WpfApp1.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="App" Height="600" Width="400"
+        ResizeMode="NoResize"
+        >
+    <Grid>
+        <StackPanel>
+            <Image Height="140" Stretch="Fill"/>
+            <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                <ListViewItem Height="45" Padding="0">
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="#FF0069C1" Margin="5" VerticalAlignment="Center"/>
+                        <TextBlock Text="Settings" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="45" Padding="0">
+                    <StackPanel Orientation="Horizontal" Width="auto" Margin="10 0">
+                        <Label Content="Channel:" VerticalAlignment="Center"  HorizontalAlignment="Center" />
+                        <TextBox x:Name="ChannelNameInput" TextWrapping="Wrap" Text="" Width="220" VerticalAlignment="Center"  HorizontalAlignment="Center" />
+                        <Button x:Name="ConnectChannel" Content="Join" Width="auto" Height="34" Click="ConnectChannel_Click"   />
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
