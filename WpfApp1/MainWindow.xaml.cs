@@ -33,7 +33,7 @@ namespace WpfApp1
             Sender ping = new Sender(irc);
             ping.Start();
 
-            if (ping.connected)
+            if (irc.IsConnected())
             {
                 ChatInput.IsEnabled = true;
                 ChatInput.Text = "";

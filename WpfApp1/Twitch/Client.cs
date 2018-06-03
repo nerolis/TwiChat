@@ -53,8 +53,14 @@ namespace WpfApp1.Twitch
             }
         }
 
-        public void IsConnected()
+        public bool IsConnected()
         {
+            bool connect = tcpClient.Connected;
+
+            if (connect)
+                return true;
+
+            return false;
 
         }
 
