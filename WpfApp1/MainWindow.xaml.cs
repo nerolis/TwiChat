@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows;
 using WpfApp1.Twitch;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Threading;
 
 namespace WpfApp1
@@ -10,19 +8,21 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         private static string _botName = "qwhejuqwhne";
-        private static string _broadcasterName = "qwhejuqwhne";
         private static string _twitchOAuth = "oauth:prntuf0vfymzwfcohj0htd6kt9blcc";
+        private static string _channelName;
+
+        Client irc;
 
         private static System.Timers.Timer aTimer;
 
-        Client irc = new Client("irc.twitch.tv", 6667, _botName, _twitchOAuth, _broadcasterName);
+        
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void SetTimerAndStartPing()
+        private void SetTimerAndStartPing(string _channelName)
         {
             aTimer = new System.Timers.Timer();
             aTimer.Interval = 1000; 
@@ -30,16 +30,21 @@ namespace WpfApp1
             aTimer.AutoReset = true;
             aTimer.Enabled = true;
 
+            irc = new Client("irc.twitch.tv", 6667, _botName, _twitchOAuth, _channelName);
+
             Sender ping = new Sender(irc);
             ping.Start();
 
             if (irc.IsConnected())
             {
                 ChatInput.IsEnabled = true;
-                ChatInput.Text = "";
                 SendMsgToChat.IsEnabled = true;
-                MsgBox.Text = "Connected";
-
+                ChatInput.Text = "";
+                CurrentChannel.Content = "Current channel: " + _channelName;
+                ChannelName.Text = "";
+            } else
+            {
+                MessageBox.Show("Err");
             }
         }
 
@@ -69,14 +74,14 @@ namespace WpfApp1
 
         private void SendMsgToChat_Click(object sender, RoutedEventArgs e)
         {
-            if (ChatInput.Text == "")
+            if (ChatInput.Text == "" && !irc.IsConnected())
             {
                 MessageBox.Show("You must write something before send");
             }
             else
             {
                 irc.SendPublicChatMessage(ChatInput.Text);
-                MsgBox.Text = MsgBox.Text + "\n" + ChatInput.Text;
+                MsgBox.Text = MsgBox.Text + "\n" + _botName + ": " + ChatInput.Text;
                 ChatInput.Text = "";
             }
         }
@@ -87,8 +92,14 @@ namespace WpfApp1
         }
 
         private void ConnectChannel_Click(object sender, RoutedEventArgs e)
-        {   
-            SetTimerAndStartPing();
+        {
+            string _channelName = ChannelName.Text;
+            SetTimerAndStartPing(_channelName);
+        }
+
+        private void ChatInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }
