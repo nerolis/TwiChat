@@ -10,15 +10,15 @@
     <Window.Resources>
         <RoutedUICommand x:Key="SendMsg" Text="Text" />
     </Window.Resources>
-    
+
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource SendMsg}" Executed="SendMsgToChat_Click" />
     </Window.CommandBindings>
-    
+
     <Window.InputBindings>
         <KeyBinding Key="Enter" Command="{StaticResource SendMsg}" />
     </Window.InputBindings>
-    
+
     <Grid RenderTransformOrigin="0.476,0.512" Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="173*" />
@@ -28,7 +28,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Button Command="{StaticResource SendMsg}" x:Name="ConnectChannel"  Content="Join Channel" Foreground="White" VerticalAlignment="Bottom" Height="28" Width="Auto" Background="{x:Null}" FontStyle="Italic"  Grid.Column="2" BorderBrush="White">
+        <Button x:Name="ConnectChannel"  Content="Join Channel" Foreground="White" VerticalAlignment="Bottom" Height="28" Width="Auto" Background="{x:Null}" FontStyle="Italic"  Grid.Column="2" BorderBrush="White" Click="ConnectChannel_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -40,7 +40,7 @@
         </Button>
         <TextBox x:Name="ChannelName" Height="21" TextWrapping="Wrap" Text="Channel Name" Width="auto" Grid.Column="2" VerticalAlignment="Bottom" Margin="0,0,0,29" Background="{x:Null}" Foreground="White" BorderBrush="White" FontStyle="Italic" FontSize="14" />
         <TextBox x:Name="MsgBox" Height="auto" Width="auto" TextWrapping="Wrap" Grid.ColumnSpan="2" Background="Black" Foreground="White" FontStyle="Italic" FontSize="20"/>
-        <TextBox Text=""  Foreground="White"  x:Name="ChatInput" Height="50" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="Auto" Grid.ColumnSpan="2" Background="Black" BorderBrush="White" SelectionBrush="{x:Null}" FontSize="16" FontStyle="Italic" />
-        <Button x:Name="SendMsgToChat" Content="Send" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Grid.Column="1" Margin="148,369,0,0" Height="50" BorderBrush="White" Background="Black" Foreground="White" Click="SendMsgToChat_Click"/>
+        <TextBox Text="&#x9;        Input disabled. Join chat."  Foreground="White"  x:Name="ChatInput" Height="50" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="Auto" Grid.ColumnSpan="2" Background="Black" BorderBrush="White" SelectionBrush="{x:Null}" FontSize="16" FontStyle="Italic" IsEnabled="False" />
+        <Button x:Name="SendMsgToChat" Content="Send" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="71" Grid.Column="1" Height="50" BorderBrush="#FF376EE4" Background="Black" Foreground="White" Click="SendMsgToChat_Click" IsEnabled="False"/>
     </Grid>
 </Window>
