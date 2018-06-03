@@ -15,8 +15,6 @@ namespace WpfApp1
 
         private static System.Timers.Timer aTimer;
 
-        
-
         public MainWindow()
         {
             InitializeComponent();
@@ -35,17 +33,16 @@ namespace WpfApp1
             Sender ping = new Sender(irc);
             ping.Start();
 
-            if (irc.IsConnected())
-            {
-                ChatInput.IsEnabled = true;
-                SendMsgToChat.IsEnabled = true;
-                ChatInput.Text = "";
-                CurrentChannel.Content = "Current channel: " + _channelName;
-                ChannelName.Text = "";
-            } else
-            {
-                MessageBox.Show("Err");
-            }
+            if (!irc.IsConnected())
+                return;
+
+            ChatInput.IsEnabled = true;
+            SendMsgToChat.IsEnabled = true;
+            ChatInput.Text = "";
+            CurrentChannel.Content = "Current channel: " + _channelName;
+            ChannelName.Text = "";
+      
+        
         }
 
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
@@ -68,8 +65,6 @@ namespace WpfApp1
 
                 showMsg(parsedMsg);
             }
-               
-
         }
 
         private void SendMsgToChat_Click(object sender, RoutedEventArgs e)
@@ -97,7 +92,7 @@ namespace WpfApp1
             SetTimerAndStartPing(_channelName);
         }
 
-        private void ChatInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void MsgBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
 
         }
