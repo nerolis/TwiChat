@@ -11,21 +11,21 @@
         Title="MainWindow" Height="600" Width="400">
 
     <Window.Resources>
-        <RoutedUICommand x:Key="SendMsg" Text="Text" />
+        <RoutedUICommand x:Key="SendMsgToChat" Text="Text" />
     </Window.Resources>
 
     <Window.CommandBindings>
-        <CommandBinding Command="{StaticResource SendMsg}" Executed="SendMsgToChat_Click" />
+        <CommandBinding Command="{StaticResource SendMsgToChat}" Executed="SendMsgToChat_Click" />
     </Window.CommandBindings>
 
     <Window.InputBindings>
-        <KeyBinding Key="Enter" Command="{StaticResource SendMsg}" />
+        <KeyBinding Key="Enter" Command="{StaticResource SendMsgToChat}" />
     </Window.InputBindings>
 
-    <Grid Background="White">
-        <ScrollViewer Height="auto" Width="auto" Background="#FF109179" Margin="0,0,0,43">
+    <Grid Background="#FF19171C">
+        <ScrollViewer Height="auto" Width="auto" Background="#FF19171C" Margin="0,0,0,43">
             <StackPanel Height="auto" Width="auto" VerticalAlignment="top">
-                <TextBox x:Name="MsgBox" Height="auto" TextWrapping="Wrap" Width="auto"  FontSize="18" FontStyle="Italic"  Foreground="White" HorizontalContentAlignment="Left" TextDecorations="{x:Null}" >
+                <TextBox x:Name="MsgBox" Height="auto" TextWrapping="Wrap" Width="auto"  FontSize="18" FontStyle="Italic"  Foreground="White" HorizontalContentAlignment="Left" TextDecorations="{x:Null}" BorderBrush="{x:Null}" >
                     <TextBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -38,7 +38,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Button   x:Name="SendMsgToChat" Content="Button" Width="98" HorizontalAlignment="right"  VerticalAlignment="Bottom" Click="SendMsgToChat_Click" Height="33" Margin="0,0,10,10" BorderBrush="White" Background="#FF109179" />
-        <TextBox  x:Name="ChatInput" Height="33" TextWrapping="Wrap" Text="asdasdasdas" Width="auto"  VerticalAlignment="Bottom" Margin="0,0,108,10" SelectionBrush="{x:Null}" BorderBrush="#89FFFFFF" Foreground="Black" Background="White" FontStyle="Italic" FontSize="16" CaretBrush="White" />
+        <Button   x:Name="SendMsgToChat" Content="Send" Width="98" HorizontalAlignment="right"  VerticalAlignment="Bottom" Click="SendMsgToChat_Click" Height="33" Margin="0,0,10,10" Background="#FF6441A4" Foreground="#DD000000" BorderBrush="{x:Null}" OpacityMask="#FF6441A4" />
+        <TextBox  x:Name="ChatInput" Height="33" TextWrapping="Wrap" Text="asdasdasdas" Width="auto"  VerticalAlignment="Bottom" Margin="0,0,108,10" SelectionBrush="#FF6441A4" BorderBrush="#FF6441A4" Foreground="White" Background="{x:Null}" FontStyle="Italic" FontSize="16" CaretBrush="#FF6441A4" OpacityMask="#FF6441A4" />
     </Grid>
 </Window>

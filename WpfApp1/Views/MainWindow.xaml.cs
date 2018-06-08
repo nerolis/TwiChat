@@ -10,12 +10,44 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
+        private static System.Timers.Timer aTimer;
 
         Client Irc;
 
         public MainWindow()
         {
+            Irc = new Client("irc.twitch.tv", 6667, Properties.Settings.Default.botName, Properties.Settings.Default.twitchToken, channelName);
             InitializeComponent();
+        }
+
+
+        private void StartPool()
+        {
+            aTimer = new System.Timers.Timer();
+            aTimer.Interval = 1000;
+            aTimer.Elapsed += ReadMsgsTimer;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
+        }
+
+        private void ReadMsgsTimer(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            string message = Irc.ReadMessage();
+
+            HandleEvents(message);
+        }
+
+        public void Connect(string channelName)
+        {
+
+            Sender ping = new Sender(Irc);
+
+            ping.Start();
+
+            if (!Irc.IsConnected())
+                return;
+
+            StartPool();
         }
 
         public void HandleEvents(string message)
@@ -33,6 +65,7 @@ namespace WpfApp1
                 ShowMsg(parsedMsg);
             }
         }
+
 
     
         private void ShowMsg(string msg)
