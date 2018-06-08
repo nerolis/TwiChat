@@ -22,22 +22,23 @@
         <KeyBinding Key="Enter" Command="{StaticResource SendMsg}" />
     </Window.InputBindings>
 
-    <Grid>
-        <ListBox>
-            <!-- other XAML omitted, you just need to add the following bit -->
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                </Style>
+    <Grid Background="White">
+        <ScrollViewer Height="auto" Width="auto" Background="#FF109179" Margin="0,0,0,43">
+            <StackPanel Height="auto" Width="auto" VerticalAlignment="top">
+                <TextBox x:Name="MsgBox" Height="auto" TextWrapping="Wrap" Width="auto"  FontSize="18" FontStyle="Italic"  Foreground="White" HorizontalContentAlignment="Left" TextDecorations="{x:Null}" >
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.228"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+            </StackPanel>
+        </ScrollViewer>
 
-            </ListBox.ItemContainerStyle>
-            <ScrollViewer Height="522" Width="382">
-                <StackPanel Height="auto" Width="auto" VerticalAlignment="Bottom">
-                    <TextBox x:Name="MsgBox" Height="516" HorizontalAlignment="Left"  VerticalAlignment="Top" TextWrapping="Wrap" Text="TextBox" Width="366" />
-                </StackPanel>
-            </ScrollViewer>
-        </ListBox>
-        <Button x:Name="SendMsgToChat" Content="Button" Width="75" HorizontalAlignment="right"  VerticalAlignment="Bottom" Click="SendMsgToChat_Click_1" />
-        <TextBox x:Name="ChatInput" Height="38" TextWrapping="Wrap" Text="TextBox" Width="auto"  VerticalAlignment="Bottom" Margin="0,0,75,0" />
+        <Button   x:Name="SendMsgToChat" Content="Button" Width="98" HorizontalAlignment="right"  VerticalAlignment="Bottom" Click="SendMsgToChat_Click" Height="33" Margin="0,0,10,10" BorderBrush="White" Background="#FF109179" />
+        <TextBox  x:Name="ChatInput" Height="33" TextWrapping="Wrap" Text="asdasdasdas" Width="auto"  VerticalAlignment="Bottom" Margin="0,0,108,10" SelectionBrush="{x:Null}" BorderBrush="#89FFFFFF" Foreground="Black" Background="White" FontStyle="Italic" FontSize="16" CaretBrush="White" />
     </Grid>
 </Window>

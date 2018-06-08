@@ -40,7 +40,7 @@ namespace WpfApp1
              Dispatcher.BeginInvoke(new ThreadStart(delegate { MsgBox.Text = MsgBox.Text + "\n" + msg; }));
         }
 
-        private void SendMsgToChat_Click_1(object sender, RoutedEventArgs e)
+        private void SendMsgToChat_Click(object sender, RoutedEventArgs e)
         {
             if (ChatInput.Text == "" && !Irc.IsConnected())
             {
@@ -53,5 +53,6 @@ namespace WpfApp1
                 ChatInput.Text = "";
             }
         }
+
     }
 }
