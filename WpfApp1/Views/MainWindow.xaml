@@ -39,6 +39,6 @@
         </ScrollViewer>
 
         <Button   x:Name="SendMsgToChat" Content="Send" Width="98" HorizontalAlignment="right"  VerticalAlignment="Bottom" Click="SendMsgToChat_Click" Height="33" Margin="0,0,10,10" Background="#FF6441A4" Foreground="#DD000000" BorderBrush="{x:Null}" OpacityMask="#FF6441A4" />
-        <TextBox  x:Name="ChatInput" Height="33" TextWrapping="Wrap" Text="asdasdasdas" Width="auto"  VerticalAlignment="Bottom" Margin="0,0,108,10" SelectionBrush="#FF6441A4" BorderBrush="#FF6441A4" Foreground="White" Background="{x:Null}" FontStyle="Italic" FontSize="16" CaretBrush="#FF6441A4" OpacityMask="#FF6441A4" />
+        <TextBox  x:Name="ChatInput" Height="33" TextWrapping="Wrap" Width="auto"  VerticalAlignment="Bottom" Margin="0,0,108,10" SelectionBrush="#FF6441A4" BorderBrush="#FF6441A4" Foreground="White" Background="{x:Null}" FontStyle="Italic" FontSize="16" CaretBrush="#FF6441A4" OpacityMask="#FF6441A4" />
     </Grid>
 </Window>

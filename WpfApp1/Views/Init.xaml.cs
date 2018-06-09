@@ -7,7 +7,6 @@ namespace WpfApp1.Views
     public partial class Init : Window
     {
 
-        Client irc;
         MainWindow main = new MainWindow();
 
         public Init()
@@ -15,12 +14,8 @@ namespace WpfApp1.Views
             InitializeComponent();
         }
 
-
-        private void JoinChannel(string _channelName)
-        {
-
-            main.Show();
-
+        private void JoinChannel(string _channelName) {
+            main.Connect(_channelName);
             Hide();
         }
 

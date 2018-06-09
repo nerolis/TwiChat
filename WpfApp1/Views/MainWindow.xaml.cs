@@ -11,15 +11,12 @@ namespace WpfApp1
     {
 
         private static System.Timers.Timer aTimer;
-
-        Client Irc;
+        Client irc;
 
         public MainWindow()
         {
-            Irc = new Client("irc.twitch.tv", 6667, Properties.Settings.Default.botName, Properties.Settings.Default.twitchToken, channelName);
             InitializeComponent();
         }
-
 
         private void StartPool()
         {
@@ -32,22 +29,27 @@ namespace WpfApp1
 
         private void ReadMsgsTimer(Object source, System.Timers.ElapsedEventArgs e)
         {
-            string message = Irc.ReadMessage();
+            string message = irc.ReadMessage();
 
             HandleEvents(message);
         }
 
         public void Connect(string channelName)
         {
+            irc = new Client("irc.twitch.tv", 6667, Properties.Settings.Default.botName, Properties.Settings.Default.twitchToken, channelName);
 
-            Sender ping = new Sender(Irc);
+            Sender ping = new Sender(irc);
 
             ping.Start();
 
-            if (!Irc.IsConnected())
+            if (!irc.IsConnected())
                 return;
 
+            Show();
+
             StartPool();
+
+            ShowMsg("Connected");
         }
 
         public void HandleEvents(string message)
@@ -66,8 +68,6 @@ namespace WpfApp1
             }
         }
 
-
-    
         private void ShowMsg(string msg)
         {   
              Dispatcher.BeginInvoke(new ThreadStart(delegate { MsgBox.Text = MsgBox.Text + "\n" + msg; }));
@@ -75,14 +75,14 @@ namespace WpfApp1
 
         private void SendMsgToChat_Click(object sender, RoutedEventArgs e)
         {
-            if (ChatInput.Text == "" && !Irc.IsConnected())
+            if (ChatInput.Text == "" && !irc.IsConnected())
             {
                 MessageBox.Show("You must write something before send");
             }
             else
             {
-                Irc.SendPublicChatMessage(ChatInput.Text);
-                MsgBox.Text = MsgBox.Text + "\n" + "test" + ": " + ChatInput.Text;
+                irc.SendPublicChatMessage(ChatInput.Text); 
+                MsgBox.Text = MsgBox.Text + "\n" + Properties.Settings.Default.botName + ": " + ChatInput.Text;
                 ChatInput.Text = "";
             }
         }
